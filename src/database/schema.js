@@ -1,9 +1,11 @@
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { Table } from "drizzle-orm";
+import { index, pgTable, varchar } from "drizzle-orm/pg-core";
 
-export const usersTable = pgTable("users", {
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  password: varchar({ length: 255 }).notNull(),
-  name: varchar({ length: 255 }).notNull(),
-  age: integer().notNull(),
-  email: varchar({ length: 255 }).notNull().unique(),
+export const urls = pgTable("urls", {
+  short:varchar(10).primaryKey(),
+  origin:varchar(255).notNull(),
+}, (table)=>{
+  return{
+    originIdx:index("origin_idx").on(table.origin) //可以在欄位加上index加快查詢速度，若有unique屬性(short)即有index，不須另外建
+  }
 });

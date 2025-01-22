@@ -1,0 +1,5 @@
+{
+  "database": {
+    "connectionString": "postgresql://test_owner:zofhX6kO5wQZ@ep-icy-sea-a1r911kv.ap-southeast-1.aws.neon.tech/test?sslmode=require"
+  }
+}
